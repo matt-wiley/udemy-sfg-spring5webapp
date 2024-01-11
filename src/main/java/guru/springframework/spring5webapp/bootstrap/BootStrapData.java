@@ -31,6 +31,7 @@ public class BootStrapData implements CommandLineRunner {
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
 
+
         authorRepository.save(eric);
         bookRepository.save(ddd);
 
@@ -43,10 +44,16 @@ public class BootStrapData implements CommandLineRunner {
         Publisher bluewave = new Publisher("Blue Wave Publishers", "123 Main St", "Cincinnati", "OH", "45202");
 
         publisherRepository.save(bluewave);
+        ddd.setPublisher(bluewave);
+        bluewave.getBooks().add(ddd);
+        noEJB.setPublisher(bluewave);
+        bluewave.getBooks().add(noEJB);
+
 
         System.out.println("Started in Bootstrap");
         System.out.println("Number of Authors: " + authorRepository.count());
         System.out.println("Number of Publishers: " + publisherRepository.count());
+        System.out.println("Publisher Number of Books: " + bluewave.getBooks().size());
         System.out.println("Number of Books: " + bookRepository.count());
 
     }
