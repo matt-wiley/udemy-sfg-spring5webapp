@@ -42,12 +42,16 @@ public class BootStrapData implements CommandLineRunner {
     bookRepository.save(noEJB);
 
     Publisher bluewave = new Publisher("Blue Wave Publishers", "123 Main St", "Cincinnati", "OH", "45202");
-
     publisherRepository.save(bluewave);
+    
     ddd.setPublisher(bluewave);
     bluewave.getBooks().add(ddd);
     noEJB.setPublisher(bluewave);
     bluewave.getBooks().add(noEJB);
+    
+    bookRepository.save(ddd);
+    bookRepository.save(noEJB);
+    publisherRepository.save(bluewave);
 
 
     System.out.println("Started in Bootstrap");
